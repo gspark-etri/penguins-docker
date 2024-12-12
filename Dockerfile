@@ -77,7 +77,7 @@ ENV CPLUS_INCLUDE_PATH=$CCL_ROOT/include:$CPLUS_INCLUDE_PATH
 # DeepSpeed 소스에서 설치
 WORKDIR /workspace
 RUN git clone https://github.com/gspark-etri/deepspeed-dev.git
-WORKDIR /workspace/DeepSpeed
+WORKDIR /workspace/deepspeed-dev
 RUN pip install .
 
 # DeepSpeed 버전 확인
