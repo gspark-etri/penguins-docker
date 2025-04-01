@@ -55,7 +55,6 @@ ENV CCL_ROOT=${ONEAPI_ROOT}/ccl/latest
 ENV CUDA_HOME=/usr/local/cuda
 ENV PATH=${CUDA_HOME}/bin:${PATH}
 ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
-<<<<<<< HEAD
 ENV CUDA_DEVICE_ORDER=PCI_BUS_ID
 ENV CUDA_VISIBLE_DEVICES=all
 
@@ -72,24 +71,6 @@ ENV CPLUS_INCLUDE_PATH=${CCL_ROOT}/include:${CPLUS_INCLUDE_PATH}
 RUN pip install --upgrade pip && \
     pip install triton==3.0.0 ninja packaging pydantic
 
-# DeepSpeed 설치 (v0.16.0으로 원래 버전 유지)
-WORKDIR /tmp
-RUN wget https://github.com/microsoft/DeepSpeed/archive/refs/tags/v0.16.0.tar.gz && \
-    tar xvf v0.16.0.tar.gz && \
-    cd DeepSpeed-0.16.0 && \
-    # 필요한 빌드 옵션 설정
-    TORCH_CUDA_ARCH_LIST="8.0;8.6;8.9" \
-    DS_BUILD_CCL=1 \
-    DS_BUILD_CUDA_EXTENSIONS=1 \
-    pip install . && \
-    cd .. && \
-    rm -rf DeepSpeed-0.16.0 v0.16.0.tar.gz
-
-# Hugging Face 관련 라이브러리 및 flash-attn 설치
-=======
-
-# PyTorch 설치 (CUDA 12.1 버전)
-RUN pip install torch==2.1.0+cu121 torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu121
 
 # oneCCL 소스에서 빌드 및 설치
 RUN apt-get update && apt-get install -y \
@@ -125,7 +106,6 @@ RUN python -c "import deepspeed; print('DeepSpeed version:', deepspeed.__version
 # ENV TORCH_EXTENSIONS_DIR=/workspace/torch-extensions
 
 # Hugging Face 라이브러리 설치
->>>>>>> fb4dbacef911c7740cf0b7ec7072880bd50093a3
 RUN pip install --upgrade transformers accelerate datasets
 RUN pip install flash-attn==2.3.6
 
