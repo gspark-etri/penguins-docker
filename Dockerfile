@@ -35,5 +35,5 @@ ENV CCL_ROOT=/opt/intel/oneapi/ccl/latest \
 # 6. 패키지 버전 문자열 패치 및 Penguin(DeepSpeed) 설치 및 Penguin(DeepSpeed) 설치
 RUN pip install .
 
-RUN pip install transformers, datasets
+RUN pip install transformers datasets
 
