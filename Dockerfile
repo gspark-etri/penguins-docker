@@ -15,7 +15,7 @@ RUN apt-get update && \
         wget \
         gnupg2 \
         vim
-RUN apt-get install rdma-core libibverbs1 libibmad5 libibumad3
+RUN apt-get install -y rdma-core libibverbs1 libibmad5 libibumad3
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
