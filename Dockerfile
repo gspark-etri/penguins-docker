@@ -14,8 +14,9 @@ RUN apt-get update && \
         ca-certificates \
         wget \
         gnupg2 \
-        vim && \
-    rm -rf /var/lib/apt/lists/*
+        vim
+RUN apt-get install rdma-core libibverbs1 libibmad5 libibumad3
+RUN rm -rf /var/lib/apt/lists/*
 
 RUN wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
     | gpg --dearmor | tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null && \
