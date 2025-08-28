@@ -3,13 +3,10 @@ docker run -it \
   --ulimit memlock=-1 \
   --cap-add=SYS_NICE \
   --cap-add=SYS_RESOURCE \
-  --device=/dev/infiniband/uverbs0 \
-  --device=/dev/infiniband/rdma_cm \
+  --device=/dev/infiniband \
   --gpus all \
   --ipc=host \
   --network=host \
   --name penguin-rdma \
-  -v /data/cache/huggingface:/root/.cache/huggingface \
-  -v /data/cache/torch:/root/.cache/torch \
-  -v /data/cache/tfhub:/root/.cache/tfhub_modules \
+  -v /data/cache/huggingface:/root/.cache \
   deepspeed-dev

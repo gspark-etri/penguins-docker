@@ -7,7 +7,5 @@ docker run -it \
   --ipc=host \
   --network=host \
   --name ipoib \
-  -v /data/cache/huggingface:/root/.cache/huggingface \
-  -v /data/cache/torch:/root/.cache/torch \
-  -v /data/cache/tfhub:/root/.cache/tfhub_modules \
+  -v /data/cache/huggingface:/root/.cache \
   deepspeed-dev
